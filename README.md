@@ -44,7 +44,7 @@ The core of this automation lies in its ability to:
 
 ---
 
-### Built With
+<!-- ### Built With
 
 | Tool / Technology          | Purpose                                                |
 | -------------------------- | ------------------------------------------------------ |
@@ -55,7 +55,7 @@ The core of this automation lies in its ability to:
 | SMTP Mail Activity         | To send automated emails with the report.              |
 | Windows Credential Manager | For securely storing and retrieving email credentials. |
 
----
+--- -->
 
 ### Getting Started
 
