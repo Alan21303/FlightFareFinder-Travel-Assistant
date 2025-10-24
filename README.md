@@ -1,59 +1,108 @@
-# ✈️ Flight Fare Finder Bot using UiPath
+# FlightFareFinder - Travel Assistant
 
-This project is a Robotic Process Automation (RPA) bot developed using **UiPath Studio**. It automates the process of searching and comparing flight fares from [MakeMyTrip](https://www.makemytrip.com), extracts the required data, stores it in an Excel file, and sends it to the user via email — saving both time and effort.
+<p align="center">
+  <img src="https://img.shields.io/badge/UiPath-Studio-blueviolet?style=for-the-badge&logo=uipath" />
+  <img src="https://img.shields.io/badge/Microsoft-Excel-1D6F42?style=for-the-badge&logo=microsoft-excel" />
+</p>
 
----
-
-## ✍️ Author
-
-- **Alan03** - [Alan21303](https://github.com/Alan21303)
-
----
-
-## 📌 Features
-
-- ✅ Accepts source, destination, travel date, and recipient email as inputs
-- 🌐 Launches MakeMyTrip and performs automated search
-- 📊 Extracts airline name, departure/arrival times, and fare
-- 📝 Stores the data in a formatted Excel file
-- 📧 Sends the result file to the user using SMTP
+An intelligent RPA bot designed to automate the tedious process of searching for flight fares. This assistant navigates [MakeMyTrip.com](https://www.makemytrip.com), scrapes flight data based on user input, compiles it into a structured Excel report, and delivers it directly to your inbox.
 
 ---
 
-## 🛠️ Tools & Technologies
+### About The Project
 
-| Tool / Technology    | Purpose                                       |
-| -------------------- | --------------------------------------------- |
-| UiPath Studio        | RPA workflow development                      |
-| MakeMyTrip.com       | Data source for flight fares                  |
-| Data Scraping Wizard | To extract structured flight data             |
-| Excel Activities     | For writing and formatting data in Excel      |
-| SMTP Mail Activity   | To send automated emails with attachments     |
-| Input Dialog Boxes   | To accept user inputs dynamically             |
-| Try-Catch & Delays   | For error handling and timing synchronization |
+Manually checking websites for the best flight prices is time-consuming and repetitive. This project solves that problem by deploying a UiPath robot to act as a personal travel assistant. It provides a hands-free way to gather and compare flight information, saving you valuable time and effort.
 
----
+The core of this automation lies in its ability to:
 
-## 🧩 Challenges Faced
-
-| Problem                   | Solution Implemented                                     |
-| ------------------------- | -------------------------------------------------------- |
-| Dynamic Web Elements      | Used stable selectors with Anchor Base and UI Explorer   |
-| Page Load Timing          | Added `Element Exists` checks and appropriate delays     |
-| Incomplete Data Scraping  | Adjusted scraping regions and validated DataTable output |
-| SMTP Configuration Issues | Used port 587 with TLS and correct credentials           |
+- Interact with a user to get travel requirements.
+- Perform robust web automation on a dynamic website.
+- Extract structured data from complex web layouts.
+- Generate a clean, usable report.
+- Communicate the results via email.
 
 ---
 
-## 🌍 Real-World Use Cases
+### Key Features
 
-- Used by travel agents for quick fare analysis
-- Corporate travel planners can automate cost comparisons
-- Frequent travelers can schedule periodic fare checks
+- **Dynamic User Input:** Prompts for travel details like source, destination, and date.
+- **Automated Web Navigation:** Launches MakeMyTrip.com and performs the search automatically.
+- **Intelligent Data Scraping:** Extracts crucial flight details including airline, timings, and price.
+- **Structured Reporting:** Organizes all scraped data into a clean, easy-to-read Excel file.
+- **Secure Email Notifications:** Automatically sends the Excel report using securely stored SMTP credentials.
 
 ---
 
-## 🔮 Future Enhancements
+### How It Works
+
+1.  **Collects Input:** The robot starts by asking the user for the source, destination, travel date, and recipient email.
+2.  **Launches Browser:** It opens MakeMyTrip.com in a web browser.
+3.  **Performs Search:** The bot enters the user-provided details into the search form and initiates the search.
+4.  **Scrapes Data:** Once the results page loads, it systematically extracts the flight data into a structured table.
+5.  **Generates Report:** The scraped data is written to an Excel file, which is named dynamically based on the search query.
+6.  **Sends Email:** The robot retrieves securely stored sender credentials, composes an email, attaches the report, and sends it to the user.
+
+---
+
+### Built With
+
+| Tool / Technology          | Purpose                                                |
+| -------------------------- | ------------------------------------------------------ |
+| UiPath Studio              | RPA workflow development                               |
+| MakeMyTrip.com             | Data source for flight fares                           |
+| Data Scraping              | To extract structured flight data from the web.        |
+| Excel Activities           | For writing and organizing data in `.xlsx` files.      |
+| SMTP Mail Activity         | To send automated emails with the report.              |
+| Windows Credential Manager | For securely storing and retrieving email credentials. |
+
+---
+
+### Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+**Prerequisites**
+
+- **UiPath Studio** (Community or Enterprise)
+- **Microsoft Excel**
+
+**Installation & Configuration**
+
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/Alan21303/FlightFareFinder-Travel-Assistant.git
+    ```
+2.  **Open the project** in UiPath Studio by opening the `project.json` file.
+
+3.  **Set up SMTP Credentials:**
+    This bot uses the Windows Credential Manager to securely handle the sender's email credentials.
+
+    - Open **Control Panel** -> **Credential Manager** -> **Windows Credentials**.
+    - Click **"Add a generic credential"**.
+    - Enter the following details:
+      - **Internet or network address:** `FlightFareFinder_SMTP_Credentials`
+      - **User name:** Your sender's Gmail address (e.g., `your.email@gmail.com`)
+      - **Password:** Your 16-character Google App Password.
+
+4.  **Run the Robot:**
+    - Open `Main.xaml` in UiPath Studio.
+    - Click the **"Run"** button.
+    - Follow the prompts to enter your travel details.
+
+---
+
+### Author
+
+- **Alan03** - Alan21303
+
+---
+
+### Roadmap
+
+- [ ] Expand to multiple travel websites (e.g., Expedia, Goibibo).
+- [ ] Add support for advanced filters (non-stop, preferred airlines).
+- [ ] Integrate hotel and cab booking data.
+- [ ] Develop a user interface or chatbot for a more interactive experience.
 
 - Expand to multiple travel websites (Goibibo, Expedia)
 - Add filters (non-stop, preferred airline, price range)
