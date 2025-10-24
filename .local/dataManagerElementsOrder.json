@@ -11,12 +11,7 @@
     {
       "Path": "Main.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "str_Email&Sequence_1",
-        "str_User_Source&Sequence_1",
-        "str_User_Dest&Sequence_1",
-        "str_UserDate&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -24,12 +19,7 @@
     {
       "Path": "ExtractDatafromWeb.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "variable1&Sequence_3",
-        "str_Date_Selec&Sequence_5",
-        "ExtractDataTable&Sequence_7",
-        "str_ExcelName&Sequence_6"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_Destination",
         "in_Source",

@@ -585,13 +585,32 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:WriteRange>
                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518,126" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Data Saved at : &quot;+Path.Combine(&quot;Data&quot;,str_ExcelName)]" />
-                    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="Hi , Sending The Results of your Travel." DisplayName="Send SMTP Mail Message" Email="your.email@example.com" EnableSSL="True" From="your.email@example.com" sap:VirtualizedContainerService.HintSize="518,180" sap2010:WorkflowViewState.IdRef="SendMail_2" IsBodyHtml="False" Name="Alan03 Robot" Password="[Please store password in Orchestrator/Credential Manager]" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="[&quot;Flight Fare Finder Bot : &quot;+Now.ToString]" To="[in_Email]">
+                    <Sequence DisplayName="Get Sender Credentials and Send Email" sap:VirtualizedContainerService.HintSize="518,488" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:String" Name="sender_Email" />
+                        <Variable x:TypeArguments="ss:SecureString" Name="sender_Password" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:GetRobotCredential AssetName="{x:Null}" Credential="{x:Null}" DisplayName="Get Secure Credential" sap:VirtualizedContainerService.HintSize="416,167" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" OrchestratorCredentialName="FlightFareFinder_SMTP_Credentials" TimeoutMS="0">
+                        <ui:GetRobotCredential.Password>
+                          <OutArgument x:TypeArguments="ss:SecureString">[sender_Password]</OutArgument>
+                        </ui:GetRobotCredential.Password>
+                        <ui:GetRobotCredential.Username>
+                          <OutArgument x:TypeArguments="x:String">[sender_Email]</OutArgument>
+                        </ui:GetRobotCredential.Username>
+                      </ui:GetRobotCredential>
+                      <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="Hi, Sending The Results of your Travel." DisplayName="Send SMTP Mail Message" Email="[sender_Email]" EnableSSL="True" From="[sender_Email]" sap:VirtualizedContainerService.HintSize="416,180" sap2010:WorkflowViewState.IdRef="SendMail_2" IsBodyHtml="False" Name="Alan03 Robot" Port="587" SecureConnection="Auto" SecurePassword="[sender_Password]" Server="smtp.gmail.com" Subject="[&quot;Flight Fare Finder Bot : &quot;+Now.ToString]" To="[in_Email]">
                       <ui:SendMail.Files>
                         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                           <InArgument x:TypeArguments="x:String">[Path.Combine("Data",str_ExcelName)]</InArgument>
                         </scg:List>
                       </ui:SendMail.Files>
                     </ui:SendMail>
+                    </Sequence>
                     <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="518,48" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
                   </Sequence>
                 </ActivityAction>
